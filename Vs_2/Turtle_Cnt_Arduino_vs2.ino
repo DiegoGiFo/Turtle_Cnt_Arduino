@@ -20,8 +20,8 @@ void loop()
 {
   turtle_pos.x = random(1,11);
   turtle_pos.y = random(1,11);
-  turtle_pos.linear_velocity = 1;
+  turtle_pos.linear_velocity = 1.0;
   pub.publish( &turtle_pos ); //publish on chatter the string hello
   nh.spinOnce(); // where all of the ROS communication callbacks are handled
-  delay(100000);
+  delay(1000);
 }
