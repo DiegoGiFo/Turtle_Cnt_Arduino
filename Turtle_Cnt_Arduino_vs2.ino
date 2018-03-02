@@ -1,11 +1,11 @@
 
 #include <ros.h>
-#include <geometry_msgs/Twist.h>
+#include <turtlesim/Pose.h>
 
 ros::NodeHandle  nh; // allows to create publisher/subscriber
 
-geometry_msgs::Twist movements;
-ros::Publisher pub("/turtle1/cmd_vel", &movements);
+turtlesim::Pose turtle_pos;
+ros::Publisher pub("/turtle1/pose", &turtle_pos);
 
 int status = 0;
 int count = 0;
@@ -18,10 +18,10 @@ void setup()
 
 void loop()
 {
-  movements.linear.x = 2.0;
-  movements.linear.y = 2.0;
-  movements.angular.z = 2.0;
-  pub.publish( &movements ); //publish on chatter the string hello
+  turtle_pos.x = random(1,11);
+  turtle_pos.y = random(1,11);
+  turtle_pos.linear_velocity = 1;
+  pub.publish( &turtle_pos ); //publish on chatter the string hello
   nh.spinOnce(); // where all of the ROS communication callbacks are handled
-  delay(1000);
+  delay(100000);
 }
