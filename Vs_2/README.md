@@ -16,5 +16,5 @@ For the relization of this projects is needed:
 
 - Arduino uno;
 - LCD screen 16 x 2;
-- 4 buttons;
+- 4 buttons;![alt text](https://github.com/DiegoGiFo/Turtle_Cnt_Arduino/blob/master/FSB5Q9PIBL628Y3.LARGE.jpg).
 - breadboard.
