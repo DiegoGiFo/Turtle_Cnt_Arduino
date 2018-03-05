@@ -1,7 +1,6 @@
 BOARD_TAG = uno
 MONITOR_PORT = /dev/ttyACM0
-ARDUINO_LIBS = LiquidCrystal
-#ARDUINO_LIBS = ros_lib
+ARDUINO_LIBS = LiquidCrystal ros_lib
 
 
 include ../common.mk

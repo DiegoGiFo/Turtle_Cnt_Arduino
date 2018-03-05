@@ -12,30 +12,50 @@
  * wiper to LCD VO pin (pin 3)
 
  */
+
+/*
+void messageCb( const std_msgs::Empty& toggle_msg){
+  digitalWrite(13, HIGH-digitalRead(13));   // blink the led
+}
+
+ros::Subscriber<std_msgs::Empty> sub("toggle_led", &messageCb );
+*/
+
 // include the library code:
 #include <LiquidCrystal.h>
 #include <ros.h>
 #include <turtlesim/Pose.h>
 
 ros::NodeHandle  nh; // allows to create publisher/subscriber
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+char LCD_msg[16];
+float var;
 
-turtlesim::Pose turtle_pos;
-ros::Subscriber sub("/turtle1/pose", &turtle_pos);
+void turt_cb( const turtlesim::Pose &turt_msg){
+  lcd.setCursor(0,0);
+  lcd.print("X position :");
+  lcd.print(turt_msg.x);
+
+  lcd.setCursor(0,1);
+  lcd.print("Y position :");
+  lcd.print(turt_msg.y);
+}
+
+ros::Subscriber<turtlesim::Pose> sub("/turtle1/pose", &turt_cb);
 
 // initialize the library with the numbers of the interface pins
-LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+
 
 void setup() {
+  nh.initNode(); // initialize ROS node
+  nh.subscribe(sub); // advertise that we have a publisher
+
   // set up the LCD's number of columns and rows:
   lcd.begin(16, 2);
   // Print a message to the LCD.
-  lcd.print("hello, world!");
+  // lcd.print("%f %f",turtle_pos.x, turtle_pos.y);
 }
 
 void loop() {
-  // set the cursor to column 0, line 1
-  // (note: line 1 is the second row, since counting begins with 0):
-  lcd.setCursor(0, 1);
-  // print the number of seconds since reset:
-  lcd.print(millis()/1000);
+  nh.spinOnce();
 }
