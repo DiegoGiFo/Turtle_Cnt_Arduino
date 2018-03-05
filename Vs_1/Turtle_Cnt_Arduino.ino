@@ -6,8 +6,6 @@ ros::NodeHandle  nh; // allows to create publisher/subscriber
 geometry_msgs::Twist movements;
 ros::Publisher pub("/turtle1/cmd_vel", &movements);
 
-int status = 0;
-int count = 0;
 
 void setup()
 {
