@@ -40,10 +40,6 @@ int LFT = 0;
 int FWD = 0;
 int BEH = 0;
 
-void reset(geometry_msgs::Twist mov){
-  mov.angular.z = 0;
-  mov.linear.x = 0;
-}
 
 void setup() {
   // initialize the pushbutton pin as an input:
@@ -66,24 +62,39 @@ void loop() {
 
   // check if the pushbutton is pressed. If it is, the buttonState is HIGH:
   if (RGT == HIGH) {
+    movements.linear.x = 0;
     movements.angular.z= 1.7;
     pub.publish( &movements );
+    delay(1000);
+    movements.linear.x = 2;
+    movements.angular.z= 0;
+    pub.publish( &movements );
+
   }
 
   else if(LFT == HIGH) {
+    movements.linear.x = 0;
     movements.angular.z= -1.7;
     pub.publish( &movements );
+    delay(1000);
+    movements.linear.x = 2.0;
+    movements.angular.z= 0;
+    pub.publish( &movements );
+
   }
 
   else if (FWD == HIGH){
     movements.linear.x = 2.0;
+    movements.angular.z= 0;
     pub.publish( &movements );
   }
 
   else if (BEH == HIGH){
     movements.linear.x = -2.0;
+    movements.angular.z= 0;
     pub.publish( &movements );
+
   }
-  reset(movements);
+
   nh.spinOnce(); // where all of the ROS communication callbacks are handled
 }
