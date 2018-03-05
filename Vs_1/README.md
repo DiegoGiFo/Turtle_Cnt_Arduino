@@ -2,7 +2,7 @@
 
 This version of the project allows to:
 
-- Controll the simulator of ros (turtlesim) with Arduino;
+- Controll the simulator of ROS (turtlesim) with Arduino;
 
 ## TOPICS
 
