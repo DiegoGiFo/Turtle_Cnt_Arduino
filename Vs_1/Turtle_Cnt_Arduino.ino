@@ -1,7 +1,6 @@
 
 #include <ros.h>
 #include <geometry_msgs/Twist.h>
-
 ros::NodeHandle  nh; // allows to create publisher/subscriber
 
 geometry_msgs::Twist movements;
