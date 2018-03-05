@@ -68,16 +68,10 @@ void loop() {
   if (RGT == HIGH) {
     movements.angular.z= 1.7;
     pub.publish( &movements );
-    delay(1000);
-    movements.linear.x = 2.0;
-    pub.publish( &movements );
   }
 
   else if(LFT == HIGH) {
     movements.angular.z= -1.7;
-    pub.publish( &movements );
-    delay(1000);
-    movements.linear.x = 2.0;
     pub.publish( &movements );
   }
 
@@ -92,5 +86,4 @@ void loop() {
   }
   reset(movements);
   nh.spinOnce(); // where all of the ROS communication callbacks are handled
-  delay(1000);
 }

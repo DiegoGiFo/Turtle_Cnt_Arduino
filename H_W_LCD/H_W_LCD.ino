@@ -10,10 +10,17 @@
  * 10K resistor:
  * ends to +5V and ground
  * wiper to LCD VO pin (pin 3)
- 
+
  */
 // include the library code:
 #include <LiquidCrystal.h>
+#include <ros.h>
+#include <turtlesim/Pose.h>
+
+ros::NodeHandle  nh; // allows to create publisher/subscriber
+
+turtlesim::Pose turtle_pos;
+ros::Subscriber sub("/turtle1/pose", &turtle_pos);
 
 // initialize the library with the numbers of the interface pins
 LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
