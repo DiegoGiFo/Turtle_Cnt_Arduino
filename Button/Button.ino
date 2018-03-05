@@ -63,7 +63,7 @@ void loop() {
   // check if the pushbutton is pressed. If it is, the buttonState is HIGH:
   if (RGT == HIGH) {
     movements.linear.x = 0;
-    movements.angular.z= 1.7;
+    movements.angular.z= 1.5;
     pub.publish( &movements );
     delay(1000);
     movements.linear.x = 2;
@@ -74,7 +74,7 @@ void loop() {
 
   else if(LFT == HIGH) {
     movements.linear.x = 0;
-    movements.angular.z= -1.7;
+    movements.angular.z= -1.5;
     pub.publish( &movements );
     delay(1000);
     movements.linear.x = 2.0;
