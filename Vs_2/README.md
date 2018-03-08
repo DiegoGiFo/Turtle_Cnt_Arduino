@@ -18,3 +18,23 @@ For the relization of this projects is needed:
 - LCD screen 16 x 2;
 - 4 buttons;
 - breadboard.
+
+## CIRCUIT
+
+#### LCD
+- RS pin to digital PIN 12
+- Enable pin to digital PIN 11
+- D4 pin to digital PIN 5
+- D5 pin to digital PIN 4
+- D6 pin to digital PIN 3
+- D7 pin to digital PIN 2
+- R/W pin to GROUND
+- 10K resistor connecting LED+ to GROUND:
+- LED- to GROUND
+- VO to GROUND
+
+#### BUTTONS
+- Rigth button PIN 6
+- Left button PIN 7
+- Forward button PIN 8
+- Behind button PIN 9
