@@ -8,9 +8,6 @@ ros::NodeHandle  nh; // allows to create publisher/subscriber
 LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 geometry_msgs::Twist movements;
 
-char LCD_msg[16];
-float var;
-
 const int BtPin1 = 6;
 const int BtPin2 = 7;
 const int BtPin3 = 8;
@@ -33,13 +30,11 @@ void turt_cb( const turtlesim::Pose &turt_msg){
 
 ros::Subscriber<turtlesim::Pose> sub("/turtle1/pose", &turt_cb);
 ros::Publisher pub("/turtle1/cmd_vel", &movements);
-// initialize the library with the numbers of the interface pins
-
 
 void setup() {
 
   nh.initNode(); // initialize ROS node
-  nh.subscribe(sub); // advertise that we have a publisher
+  nh.subscribe(sub);
   nh.advertise(pub);
 
   pinMode(BtPin1, INPUT);
@@ -48,8 +43,6 @@ void setup() {
   pinMode(BtPin4, INPUT);
   // set up the LCD's number of columns and rows:
   lcd.begin(16, 2);
-  // Print a message to the LCD.
-  // lcd.print("%f %f",turtle_pos.x, turtle_pos.y);
 }
 
 void loop() {
@@ -59,7 +52,6 @@ void loop() {
   FWD = digitalRead(BtPin3);
   BEH = digitalRead(BtPin4);
 
-  // check if the pushbutton is pressed. If it is, the buttonState is HIGH:
   if (RGT == HIGH) {
     movements.linear.x = 0;
     movements.angular.z= 1.57;
